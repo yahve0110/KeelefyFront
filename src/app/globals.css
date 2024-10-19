@@ -2,26 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Пользовательский класс для обертки текста */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* Основные стили */
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* Светлый фон */
+    --foreground: 240 10% 3.9%; /* Темный текст */
+    --card: 0 0% 100%; /* Цвет карточки */
+    --card-foreground: 240 10% 3.9%; /* Цвет текста на карточке */
+    --popover: 0 0% 100%; /* Цвет поповера */
+    --popover-foreground: 240 10% 3.9%; /* Цвет текста в поповере */
+    --primary: 240 5.9% 10%; /* Основной цвет */
+    --primary-foreground: 0 0% 98%; /* Цвет текста на основном элементе */
+    --secondary: 240 4.8% 95.9%; /* Вторичный цвет */
+    --secondary-foreground: 240 5.9% 10%; /* Цвет текста на вторичном элементе */
+    --muted: 240 4.8% 95.9%; /* Приглушенный цвет */
+    --muted-foreground: 240 3.8% 46.1%; /* Цвет текста для приглушенного элемента */
+    --accent: 240 4.8% 95.9%; /* Акцентный цвет */
+    --accent-foreground: 240 5.9% 10%; /* Цвет текста на акценте */
+    --destructive: 0 84.2% 60.2%; /* Деструктивный цвет */
+    --destructive-foreground: 0 0% 98%; /* Цвет текста на деструктивном элементе */
+    --border: 240 5.9% 90%; /* Цвет границ */
+    --input: 240 5.9% 90%; /* Цвет ввода */
+    --ring: 240 10% 3.9%; /* Цвет обводки */
+    --chart-1: 12 76% 61%; /* Цвет для графика 1 */
+    --chart-2: 173 58% 39%; /* Цвет для графика 2 */
+    --chart-3: 197 37% 24%; /* Цвет для графика 3 */
+    --chart-4: 43 74% 66%; /* Цвет для графика 4 */
+    --chart-5: 27 87% 67%; /* Цвет для графика 5 */
+    --radius: 0.5rem; /* Радиус закругления */
+ 
+  }
+
+  /* Темная тема по умолчанию */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: 203, 66%, 7%; /* Темный фон */
+      --foreground: 0 0% 98%; /* Светлый текст */
+      --card: 240 10% 3.9%; /* Цвет карточки */
+      --card-foreground: 0 0% 98%; /* Цвет текста на карточке */
+      --popover: 240 10% 3.9%; /* Цвет поповера */
+      --popover-foreground: 0 0% 98%; /* Цвет текста в поповере */
+      --primary: 0 0% 98%; /* Основной цвет */
+      --primary-foreground: 240 5.9% 10%; /* Цвет текста на основном элементе */
+      --secondary: 240 3.7% 15.9%; /* Вторичный цвет */
+      --secondary-foreground: 0 0% 98%; /* Цвет текста на вторичном элементе */
+      --muted: 240 3.7% 15.9%; /* Приглушенный цвет */
+      --muted-foreground: 240 5% 64.9%; /* Цвет текста для приглушенного элемента */
+      --accent: 240 3.7% 15.9%; /* Акцентный цвет */
+      --accent-foreground: 0 0% 98%; /* Цвет текста на акценте */
+      --destructive: 0 62.8% 30.6%; /* Деструктивный цвет */
+      --destructive-foreground: 0 0% 98%; /* Цвет текста на деструктивном элементе */
+      --border: 240 3.7% 15.9%; /* Цвет границ */
+      --input: 240 3.7% 15.9%; /* Цвет ввода */
+      --ring: 240 4.9% 83.9%; /* Цвет обводки */
+      --chart-1: 220 70% 50%; /* Цвет для графика 1 */
+      --chart-2: 160 60% 45%; /* Цвет для графика 2 */
+      --chart-3: 30 80% 55%; /* Цвет для графика 3 */
+      --chart-4: 280 65% 60%; /* Цвет для графика 4 */
+      --chart-5: 340 75% 55%; /* Цвет для графика 5 */
+    }
+  }
+}
+
+@layer utilities {
+  .scrollbar {
+    &::-webkit-scrollbar {
+      width: 6px;
+     
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb { 
+      background-color: #2196f3;
+      height: 50px;
+      border-radius: 6px;
+      border: 2px solid #2196f3;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #2196f3;
+    }
+   
+  }
+}
+
+.chalk-text {
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.22), -2px -2px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Применение стилей */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground; 
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))];
+
   }
 }
