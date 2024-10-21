@@ -27,7 +27,7 @@ export const LessonCard: React.FC<LessonCardProps> = ({
             {id}
           </div>
         </div>
-        <h2 className="text-2xl">{title}</h2>
+        <h2 className="text-2xl ml-2">{title}</h2>
       </div>
       <Link href={href} passHref>
         <button

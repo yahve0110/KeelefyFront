@@ -4,13 +4,29 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BackButton from "@/components/BackBtn/BackButton";
 import { useRouter } from "next/navigation";
-import { data } from "@/app/data";
+import { createPhraseEstEx } from "@/app/data";
 import useAudio from "@/app/shared/hooks/useAudio"; 
 import useShuffle from "@/app/shared/hooks/useShuffle";
 
-const phrases = data;
+const phrases = createPhraseEstEx;
 
-const Page = () => {
+interface CreatePhraseEstEx {
+  word: string;
+  image_url: string;
+  audio_url: string;
+  translations: string[];
+  correctWord: string;
+  type: string;
+  nextExercisePath:string
+}
+
+
+const CreatePhraseEstEx = ({
+  exercise
+
+}: {
+  exercise: CreatePhraseEstEx[];
+}) => {
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState<number>(0);
   const [status, setStatus] = useState<{ word: string; isCorrect: boolean }[]>([]);
@@ -25,9 +41,9 @@ const Page = () => {
 
   useEffect(() => {
     if (allPhrasesCompleted) {
-      router.push("/lessons/levelA/lvl1/exercise5");
+      router.push(exercise[0].nextExercisePath);
     }
-  }, [allPhrasesCompleted, router]);
+  }, [allPhrasesCompleted, router,exercise]);
 
   useEffect(() => {
     // When shuffled phrases change, derive selectable words
@@ -137,4 +153,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default CreatePhraseEstEx;

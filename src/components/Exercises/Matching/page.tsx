@@ -1,19 +1,34 @@
 "use client";
-import { multipleChoiseExRuToEst } from "@/app/data";
+import { matching } from "@/app/data";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import DraggableWord from '@/components/DraggableWord/DraggableWord';
-import WordContainer from '@/components/WordContainer/WordContainer';
-import { Word } from '@/app/shared/types/wordType';
+import DraggableWord from "@/components/DraggableWord/DraggableWord";
+import WordContainer from "@/components/WordContainer/WordContainer";
+import { Word } from "@/app/shared/types/wordType";
 
-const Exercise1: React.FC = () => {
-  const words: Word[] = multipleChoiseExRuToEst;
+interface MatchingEx {
+  word: string;
+  image_url: string;
+  audio_url: string;
+  translations: string[];
+  correctWord: string;
+  type: string;
+  nextExercisePath:string
+}
+
+const Matching = ({
+  exercise
+
+}: {
+  exercise: MatchingEx[];
+}) => {
+  const words: Word[] = matching;
   const router = useRouter();
-  
+
   const [shuffledWords, setShuffledWords] = useState<Word[]>(words);
   const [pairs, setPairs] = useState<{ [key: string]: Word }>({});
   const [finished, setFinished] = useState(false);
@@ -38,7 +53,7 @@ const Exercise1: React.FC = () => {
         return newPairs;
       });
 
-      setShuffledWords((prevWords) => 
+      setShuffledWords((prevWords) =>
         prevWords.filter((word) => word.correctWord !== ruWord)
       );
     } else {
@@ -50,10 +65,10 @@ const Exercise1: React.FC = () => {
     if (finished) {
       console.log("Redirecting to next exercise...");
       setTimeout(() => {
-        router.push("/lessons/levelA/lvl1/exercise4");
+        router.push(exercise[0].nextExercisePath);
       }, 1000);
     }
-  }, [finished, router]);
+  }, [finished, router,exercise]);
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -78,11 +93,11 @@ const Exercise1: React.FC = () => {
             <DraggableWord key={word.word} word={word} />
           ))}
         </div>
-        
+
         <ToastContainer />
       </div>
     </DndProvider>
   );
 };
 
-export default Exercise1;
+export default Matching;

@@ -1,14 +1,26 @@
-"use client";
-import { multipleChoiseExRuToEst } from "@/app/data";
+"use client"
+import React, { useState, useEffect } from "react";
 import BackButton from "@/components/BackBtn/BackButton";
 import { MultipleChoiseCard } from "@/components/MultipleChoiseCard/MultipleChoiseCard";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
 
-//toDo: ex1 and ex2 almost the same - refactor this
-const Exercise2 = () => {
-  const words = multipleChoiseExRuToEst
+// Универсальный интерфейс для любого упражнения Multiple Choice
+interface MultipleChoiceExercise {
+  word: string;
+  image_url: string;
+  audio_url: string;
+  translations: string[];
+  correctWord: string;
+  type: string;
+  nextExercisePath:string
+}
 
+// Универсальный компонент для Multiple Choice
+const MultipleChoice = ({
+  exercise,
+}: {
+  exercise: MultipleChoiceExercise[];
+}) => {
   const [wordIndex, setWordIndex] = useState(0);
   const [selectedTranslation, setSelectedTranslation] = useState("");
   const [status, setStatus] = useState("");
@@ -16,14 +28,14 @@ const Exercise2 = () => {
   const [finished, setFinished] = useState(false);
 
   const router = useRouter();
-
+  const words = exercise;
   const currentWord = words[wordIndex];
-
+console.log(words)
   useEffect(() => {
     if (finished) {
-      router.push("/lessons/levelA/lvl1/exercise3");
+      router.push(exercise[0].nextExercisePath);
     }
-  }, [finished, router]);
+  }, [finished, router, exercise]);
 
   const handleTranslationClick = async (translation: string) => {
     if (status !== "") {
@@ -93,4 +105,4 @@ const Exercise2 = () => {
   );
 };
 
-export default Exercise2;
+export default MultipleChoice;

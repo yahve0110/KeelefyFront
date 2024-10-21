@@ -1,6 +1,7 @@
-import Image from 'next/image';
-import React from 'react';
-import AudioPlayer from '@/components/audioPlayer/AudioPlayer';
+import Image from "next/image";
+import React, { useState } from "react";
+import AudioPlayer from "@/components/audioPlayer/AudioPlayer";
+import { Star } from "lucide-react";
 
 type Props = {
   wordNative: string;
@@ -10,28 +11,68 @@ type Props = {
   audio_url: string;
 };
 
-const WordCard: React.FC<Props> = ({ wordNative, wordTranslation, explanation, image_url, audio_url }) => {
-  return (
-    <div className="text-3xl font-caveat z-20  relative">
-      <div className="mb-6 z-20 relative flex flex-col  items-center gap-6">
-        <div className="bg-gray-900 text-white p-4 rounded-lg shadow-lg min-h-[500px] border-4 flex flex-col justify-center items-center border-gray-700 relative overflow-hidden z-20 w-full max-w-lg">
-          <p className="text-white text-3xl mb-7 chalk-text text-center">
-            <span>{wordNative}</span> —
-            <span className="text-green-400"> {wordTranslation}</span>
-          </p>
-          <p className="text-2xl text-gray-300 z-20 relative text-center">
-            {explanation}
-          </p>
+const WordCard: React.FC<Props> = ({
+  wordNative,
+  wordTranslation,
+  explanation,
+  image_url,
+  audio_url,
+}) => {
+  const [isFlipped, setIsFlipped] = useState(false);
 
-          <Image
-            width={300}
-            height={300}
-            src={image_url}
-            alt="illustration"
-            className="mt-4 max-w-xs z-20 relative rounded"
-          />
+  // Function to handle the flip
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
+
+  // Function to stop the event from propagating to the parent card flip handler
+  const handleAudioPlayerClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
+
+  return (
+    <div
+      className="relative w-full max-w-[440px] text-3xl font-caveat z-20 cursor-pointer"
+      onClick={handleFlip}
+    >
+      <div className="group perspective">
+        <div
+          className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
+            isFlipped ? "rotate-y-180" : ""
+          }`}
+        >
+          {/* Front side */}
+          <div className="flip-card-front bg-gray-900 rounded-3xl border-4 border-gray-400 shadow-lg min-h-[600px] flex flex-col items-center justify-center p-4 backface-hidden">
+            <Image
+              width={300}
+              height={300}
+              src={image_url}
+              alt="illustration"
+              className="mb-12 max-w-xs rounded"
+            />
+            <div className="text-white text-center">
+              <p className="text-5xl mb-7 chalk-text">
+                <span>{wordNative}</span>
+              </p>
+            </div>
+            <div className="flex justify-between w-full px-5 items-center">
+              <Star className="w-11 h-11 text-yellow-500" />
+              {/* Pass the stopPropagation handler to the AudioPlayer */}
+              <div onClick={handleAudioPlayerClick}>
+                <AudioPlayer audioUrl={audio_url} />
+              </div>
+            </div>
+          </div>
+
+          {/* Back side (translation view) */}
+          <div className="flip-card-back gap-6  bg-gray-900 rounded-3xl border-4 border-gray-400 shadow-lg min-h-[600px] flex flex-col items-center justify-center p-6 backface-hidden transform rotate-y-180 absolute inset-0">
+            <p className=" text-6xl text-center">{wordTranslation}</p>
+            <div className="bg-blue-500 w-52 rounded-full h-1"></div>
+            <p className="text-xl bold text-center text-blue-500">
+              {explanation}
+            </p>
+          </div>
         </div>
-        <AudioPlayer audioUrl={audio_url} />
       </div>
     </div>
   );

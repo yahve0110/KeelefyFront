@@ -13,7 +13,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
   return (
     <button
       onClick={playAudio}
-      className="mt-4 p-4 bg-blue-500 text-white rounded-lg shadow-lg transition-all bottom-5 right-10 z-20 absolute"
+      className="mt-4 p-4 bg-blue-500 text-white rounded-lg shadow-lg transition-all"
     >
       <Volume2 />
     </button>

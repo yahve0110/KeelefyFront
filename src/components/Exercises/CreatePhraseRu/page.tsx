@@ -3,33 +3,28 @@ import React, { useState, useEffect, useRef } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BackButton from "@/components/BackBtn/BackButton";
-import { useRouter } from "next/navigation";
-import { data } from "@/app/data"; // Import your data source
-import useAudio from "@/app/shared/hooks/useAudio"; 
+import { createPhraseRuEx } from "@/app/data"; // Import your data source
+import useAudio from "@/app/shared/hooks/useAudio";
 import useShuffle from "@/app/shared/hooks/useShuffle";
 import Congratulations from "@/components/Congrats/Congrats"; // Import the Congratulations component
 
-const phrases = data; // Assuming data is an array of phrase objects
+const phrases = createPhraseRuEx; // Assuming data is an array of phrase objects
 
-const Page = () => {
+const CreatePhraseRu = () => {
   const [selectedPhrases, setSelectedPhrases] = useState<string[]>([]);
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState<number>(0);
-  const [status, setStatus] = useState<{ phrase: string; isCorrect: boolean }[]>([]);
+  const [status, setStatus] = useState<
+    { phrase: string; isCorrect: boolean }[]
+  >([]);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [allPhrasesCompleted, setAllPhrasesCompleted] = useState<boolean>(false);
+  const [allPhrasesCompleted, setAllPhrasesCompleted] =
+    useState<boolean>(false);
   const [selectablePhrases, setSelectablePhrases] = useState<string[]>([]);
 
-  const router = useRouter();
   const containerRef = useRef<HTMLDivElement | null>(null); // Create a ref for the container
 
   // Shuffle the phrases using the custom hook
   const shuffledPhrases = useShuffle(phrases);
-
-  useEffect(() => {
-    if (allPhrasesCompleted) {
-      router.push("/lessons/levelA/lvl1/part1"); // Redirect when all phrases are completed
-    }
-  }, [allPhrasesCompleted, router]);
 
   useEffect(() => {
     if (shuffledPhrases.length > 0) {
@@ -43,7 +38,8 @@ const Page = () => {
     return array.sort(() => Math.random() - 0.5);
   };
 
-  const currentPhrase = shuffledPhrases[currentPhraseIndex] || phrases[currentPhraseIndex];
+  const currentPhrase =
+    shuffledPhrases[currentPhraseIndex] || phrases[currentPhraseIndex];
 
   const { playAudio } = useAudio(currentPhrase.audio_url);
 
@@ -53,7 +49,7 @@ const Page = () => {
 
     if (!selectedPhrases.includes(phrase)) {
       setSelectedPhrases((prev) => [...prev, phrase]);
-      
+
       // Check if the selected phrases form the correct phrase
       const userPhrase = selectedPhrases.concat(phrase).join(" "); // Include the newly selected phrase
 
@@ -63,7 +59,7 @@ const Page = () => {
       setStatus((prev) => [...prev, { phrase, isCorrect: isCorrectChoice }]);
 
       if (isCorrectChoice) {
-        playAudio(); 
+        playAudio();
         setIsCorrect(true);
         setSelectablePhrases((prev) => prev.filter((p) => p !== phrase)); // Remove selected phrase from selectable
         setTimeout(() => {
@@ -72,7 +68,7 @@ const Page = () => {
       } else {
         setIsCorrect(false);
         toast.error(`Неправильно! Правильный вариант: ${correctPhrase}`);
-        
+
         // Optional: Delay before allowing to remove selected phrase
         setTimeout(() => {
           setSelectedPhrases((prev) => prev.filter((p) => p !== phrase));
@@ -93,17 +89,22 @@ const Page = () => {
   };
 
   return (
-    <div className="px-36 py-12 relative overflow-auto scrollbar overflow-y-auto h-[80%] flex items-center justify-between flex-col" ref={containerRef}>
-      <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar />
-      <BackButton className="w-11 h-11 p-6 bg-blue-500 absolute left-[0] rounded-full" />
-
-      {allPhrasesCompleted ? (
-        <Congratulations containerRef={containerRef} /> // Render the Congratulations component
-      ) : (
-        <>
+    <>
+    { allPhrasesCompleted ? 
+        <Congratulations containerRef={containerRef} /> :(
+          <div
+          className="px-36 py-12 relative overflow-auto scrollbar overflow-y-auto h-[80%] flex items-center justify-between flex-col"
+          ref={containerRef}
+        >
+          <ToastContainer
+            position="bottom-right"
+            autoClose={2000}
+            hideProgressBar
+          />
+          <BackButton className="w-11 h-11 p-6 bg-blue-500 absolute left-[0] rounded-full" />
           <h2 className="text-4xl bold mb-7">Соберите предложение на эстонском</h2>
-          <p className="text-5xl mb-4">{currentPhrase.et}</p> {/* Display Estonian phrase */}
-
+          <p className="text-5xl mb-4">{currentPhrase.et}</p>{" "}
+          {/* Display Estonian phrase */}
           {/* Display selected phrases with their status */}
           <div className="flex flex-wrap gap-4 mb-10 ">
             {selectedPhrases.map((phrase, index) => {
@@ -116,7 +117,7 @@ const Page = () => {
                     ? "bg-green-500"
                     : "bg-red-500"
                   : "bg-gray-500";
-
+    
               return (
                 <div
                   key={index}
@@ -127,7 +128,6 @@ const Page = () => {
               );
             })}
           </div>
-
           {/* Buttons for selecting phrases */}
           <div className="flex flex-wrap gap-4 mb-10">
             {selectablePhrases.map((phrase, index) => (
@@ -140,10 +140,11 @@ const Page = () => {
               </button>
             ))}
           </div>
-        </>
-      )}
-    </div>
+        </div>
+        )}
+    </>
+
   );
 };
 
-export default Page;
+export default CreatePhraseRu;

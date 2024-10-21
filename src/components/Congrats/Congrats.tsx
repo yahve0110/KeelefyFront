@@ -1,10 +1,14 @@
-// Congratulations.js
 import React from "react";
 import Confetti from "react-confetti";
+import Button from "../Button/Button";
 
-const Congratulations = ({ containerRef }) => {
+interface CongratulationsProps {
+  containerRef: React.RefObject<HTMLDivElement>; 
+}
+
+const Congratulations: React.FC<CongratulationsProps> = ({ containerRef }) => {
   return (
-    <div className="absolute inset-0 pointer-events-none z-50">
+    <div className="w-full">
       <Confetti
         width={window.innerWidth}
         height={containerRef.current?.offsetHeight || 0}
@@ -16,6 +20,7 @@ const Congratulations = ({ containerRef }) => {
         }}
       />
       <h2 className="text-3xl text-center">Поздравляем! Вы завершили урок!</h2>
+      <Button>Назад к урокам</Button>
     </div>
   );
 };
