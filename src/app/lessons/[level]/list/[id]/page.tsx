@@ -1,6 +1,5 @@
 import { lessonParts } from "@/app/data";
 import BackButton from "@/components/BackBtn/BackButton";
-import Button from "@/components/Button/Button";
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -23,8 +22,8 @@ const LessonParts = ({ params }: { params: { slug: string } }) => {
               key={part.id}
             >
               <h2 className="text-2xl">{part.title}</h2>
-              <Link href={`/lesson/${part.id}/theory`} passHref>
-                <Button
+              <Link href={`/lessons/lesson/${part.id}/theory1`} passHref>
+                <button
                   className={`w-8 h-8 bg-white rounded group flex justify-center items-center transition ease-in-out delay-100 ${
                     part.available
                       ? "hover:bg-green-500"
@@ -36,10 +35,10 @@ const LessonParts = ({ params }: { params: { slug: string } }) => {
                     className={`text-blue-500 w-4 h-4 transition ease-in-out delay-100 ${
                       part.available
                         ? "group-hover:text-white"
-                        : "text-gray-400"
+                        : "text-black-900"
                     }`}
                   />
-                </Button>
+                </button>
               </Link>
             </div>
           );

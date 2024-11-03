@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import BackButton from "@/components/BackBtn/BackButton";
 import { MultipleChoiseCard } from "@/components/MultipleChoiseCard/MultipleChoiseCard";
+import useAudio from "@/app/shared/hooks/useAudio";
 
 interface ExerMultipleChoiseEstRu {
   word: string;
@@ -31,13 +32,14 @@ const MultipleChoiseEstRu = ({
   const hasExercises = exercise && exercise.length > 0;
 
   const currentWord = hasExercises ? exercise[wordIndex] : null;
-console.log(exercise[0].nextExercisePath)
   // useEffect всегда будет вызываться, так как он не зависит от условий
   useEffect(() => {
     if (finished) {
       router.push(exercise[0].nextExercisePath);
     }
 }, [finished, router,exercise]);
+const { playAudio } = useAudio(exercise[wordIndex].audio_url);
+
 
   const handleTranslationClick = async (translation: string) => {
     if (status !== "") {
@@ -56,25 +58,19 @@ console.log(exercise[0].nextExercisePath)
 
       // Воспроизводим звук, если выбран правильный ответ
       if (currentWord.audio_url) {
-        const audio = new Audio(currentWord.audio_url);
-        await playAudio(audio); // Ждем завершения воспроизведения
+        playAudio(); 
+        setTimeout(() => {
+          nextWord();
+        }, 3000);
       }
 
-      nextWord();
+   
     } else {
       setStatus("incorrect");
       setShowNextButton(true);
     }
   };
 
-  const playAudio = (audio: HTMLAudioElement): Promise<void> => {
-    return new Promise((resolve) => {
-      audio.play();
-      audio.onended = () => {
-        resolve();
-      };
-    });
-  };
 
   const nextWord = () => {
     if (wordIndex < exercise.length - 1) {

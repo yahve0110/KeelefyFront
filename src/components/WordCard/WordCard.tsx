@@ -42,7 +42,7 @@ const WordCard: React.FC<Props> = ({
           }`}
         >
           {/* Front side */}
-          <div className="flip-card-front bg-gray-900 rounded-3xl border-4 border-gray-400 shadow-lg min-h-[600px] flex flex-col items-center justify-center p-4 backface-hidden">
+          <div className="flip-card-front bg-gray-900 rounded-3xl border-4 border-black-900 shadow-lg min-h-[600px] flex flex-col items-center justify-center p-4 backface-hidden">
             <Image
               width={300}
               height={300}
@@ -51,9 +51,7 @@ const WordCard: React.FC<Props> = ({
               className="mb-12 max-w-xs rounded"
             />
             <div className="text-white text-center">
-              <p className="text-5xl mb-7 chalk-text">
-                <span>{wordNative}</span>
-              </p>
+              <p className="text-5xl mb-7 chalk-text">{wordTranslation}</p>
             </div>
             <div className="flex justify-between w-full px-5 items-center">
               <Star className="w-11 h-11 text-yellow-500" />
@@ -66,7 +64,7 @@ const WordCard: React.FC<Props> = ({
 
           {/* Back side (translation view) */}
           <div className="flip-card-back gap-6  bg-gray-900 rounded-3xl border-4 border-gray-400 shadow-lg min-h-[600px] flex flex-col items-center justify-center p-6 backface-hidden transform rotate-y-180 absolute inset-0">
-            <p className=" text-6xl text-center">{wordTranslation}</p>
+            <p className=" text-6xl text-center">{wordNative}</p>
             <div className="bg-blue-500 w-52 rounded-full h-1"></div>
             <p className="text-xl bold text-center text-blue-500">
               {explanation}

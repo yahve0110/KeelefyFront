@@ -2,10 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import BackButton from "@/components/BackBtn/BackButton";
 import { useRouter } from "next/navigation";
 import { createPhraseEstEx } from "@/app/data";
-import useAudio from "@/app/shared/hooks/useAudio"; 
+import useAudio from "@/app/shared/hooks/useAudio";
 import useShuffle from "@/app/shared/hooks/useShuffle";
 
 const phrases = createPhraseEstEx;
@@ -17,21 +16,18 @@ interface CreatePhraseEstEx {
   translations: string[];
   correctWord: string;
   type: string;
-  nextExercisePath:string
+  nextExercisePath: string;
 }
 
-
-const CreatePhraseEstEx = ({
-  exercise
-
-}: {
-  exercise: CreatePhraseEstEx[];
-}) => {
+const CreatePhraseEstEx = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState<number>(0);
-  const [status, setStatus] = useState<{ word: string; isCorrect: boolean }[]>([]);
+  const [status, setStatus] = useState<{ word: string; isCorrect: boolean }[]>(
+    []
+  );
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [allPhrasesCompleted, setAllPhrasesCompleted] = useState<boolean>(false);
+  const [allPhrasesCompleted, setAllPhrasesCompleted] =
+    useState<boolean>(false);
   const [selectableWords, setSelectableWords] = useState<string[]>([]);
 
   const router = useRouter();
@@ -43,7 +39,7 @@ const CreatePhraseEstEx = ({
     if (allPhrasesCompleted) {
       router.push(exercise[0].nextExercisePath);
     }
-  }, [allPhrasesCompleted, router,exercise]);
+  }, [allPhrasesCompleted, router, exercise]);
 
   useEffect(() => {
     // When shuffled phrases change, derive selectable words
@@ -59,7 +55,8 @@ const CreatePhraseEstEx = ({
     return array.sort(() => Math.random() - 0.5);
   };
 
-  const currentPhrase = shuffledPhrases[currentPhraseIndex] || phrases[currentPhraseIndex];
+  const currentPhrase =
+    shuffledPhrases[currentPhraseIndex] || phrases[currentPhraseIndex];
 
   const { playAudio } = useAudio(currentPhrase.audio_url);
 
@@ -69,7 +66,7 @@ const CreatePhraseEstEx = ({
 
     if (selectedWords.length < correctWordCount) {
       setSelectedWords((prev) => [...prev, word]);
-      
+
       // Check if the selected words form the correct phrase
       const userPhrase = [...selectedWords, word].join(" "); // Include the newly selected word
       const isCorrectChoice = userPhrase === currentPhrase.et; // Check if they match
@@ -77,7 +74,7 @@ const CreatePhraseEstEx = ({
       setStatus((prev) => [...prev, { word, isCorrect: isCorrectChoice }]);
 
       if (isCorrectChoice) {
-        playAudio(); 
+        playAudio();
         setIsCorrect(true);
         setSelectableWords((prev) => prev.filter((w) => w !== word));
         setTimeout(() => {
@@ -107,8 +104,11 @@ const CreatePhraseEstEx = ({
 
   return (
     <div className="px-36 py-12 relative overflow-auto scrollbar overflow-y-auto h-[80%] flex items-center justify-between flex-col">
-      <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar />
-      <BackButton className="w-11 h-11 p-6 bg-blue-500 absolute left-[0] rounded-full" />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar
+      />
 
       <h2 className="text-4xl bold mb-7">Соберите предложение на эстонском</h2>
       <p className="text-5xl mb-4">{currentPhrase.ru}</p>

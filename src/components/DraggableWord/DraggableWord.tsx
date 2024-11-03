@@ -29,7 +29,7 @@ const DraggableWord = forwardRef<HTMLDivElement, DraggableWordProps>(({ word }, 
           }
         }
       }}
-      className={`p-4 bg-green-500 text-white rounded-lg ${isDragging ? 'opacity-50' : ''}`}
+      className={`p-4 bg-green-500 text-black text-xl rounded-lg ${isDragging ? 'opacity-50' : ''}`}
       style={{ cursor: 'move' }}
     >
       {word.correctWord}

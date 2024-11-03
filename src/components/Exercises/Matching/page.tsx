@@ -17,34 +17,30 @@ interface MatchingEx {
   translations: string[];
   correctWord: string;
   type: string;
-  nextExercisePath:string
+  nextExercisePath: string;
 }
 
-const Matching = ({
-  exercise
-
-}: {
-  exercise: MatchingEx[];
-}) => {
+const Matching = ({ exercise }: { exercise: MatchingEx[] }) => {
   const words: Word[] = matching;
   const router = useRouter();
 
-  const [shuffledWords, setShuffledWords] = useState<Word[]>(words);
+  const [shuffledWords, setShuffledWords] = useState<Word[]>([]);
   const [pairs, setPairs] = useState<{ [key: string]: Word }>({});
   const [finished, setFinished] = useState(false);
 
   useEffect(() => {
+    shuffleWords();
+  }, []);
+
+  const shuffleWords = () => {
     const shuffled = [...words].sort(() => Math.random() - 0.5);
     setShuffledWords(shuffled);
-  }, [words]);
+  };
 
   const handleDrop = (ruWord: string, etWord: Word) => {
     if (ruWord === etWord.correctWord) {
       setPairs((prevPairs) => {
-        const newPairs = {
-          ...prevPairs,
-          [etWord.word]: etWord,
-        };
+        const newPairs = { ...prevPairs, [etWord.word]: etWord };
 
         if (Object.keys(newPairs).length === words.length) {
           setFinished(true);
@@ -64,19 +60,23 @@ const Matching = ({
   useEffect(() => {
     if (finished) {
       console.log("Redirecting to next exercise...");
-      setTimeout(() => {
-        router.push(exercise[0].nextExercisePath);
-      }, 1000);
+      const nextPath = exercise[0]?.nextExercisePath;
+      if (nextPath) {
+        setTimeout(() => {
+          router.push(nextPath);
+        }, 3000);
+      } else {
+        toast.error("Следующее упражнение недоступно.");
+      }
     }
-  }, [finished, router,exercise]);
+  }, [finished, router, exercise]);
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="flex flex-col items-center overflow-auto justify-center text-white">
-        <div className="grid grid-cols-1 gap-6 max-w-4xl">
-          <div className="flex flex-col space-y-4">
-            <h2 className="text-2xl">Сопоставьте русские слова с эстонскими</h2>
-
+        <div className="grid grid-cols-1 gap-6 max-w-4xl w-[560px]">
+          <div className="flex flex-col space-y-4 justify-center text-center">
+            <h2 className="text-2xl">Сопоставьте русские слова c эстонскими</h2>
             {words.map((word) => (
               <WordContainer
                 key={word.word}

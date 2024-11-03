@@ -1,8 +1,9 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import BackButton from "@/components/BackBtn/BackButton";
 import { MultipleChoiseCard } from "@/components/MultipleChoiseCard/MultipleChoiseCard";
 import { useRouter } from "next/navigation";
+import useAudio from "@/app/shared/hooks/useAudio";
 
 // Универсальный интерфейс для любого упражнения Multiple Choice
 interface MultipleChoiceExercise {
@@ -12,7 +13,7 @@ interface MultipleChoiceExercise {
   translations: string[];
   correctWord: string;
   type: string;
-  nextExercisePath:string
+  nextExercisePath: string;
 }
 
 // Универсальный компонент для Multiple Choice
@@ -30,7 +31,8 @@ const MultipleChoice = ({
   const router = useRouter();
   const words = exercise;
   const currentWord = words[wordIndex];
-console.log(words)
+  const { playAudio } = useAudio(words[wordIndex].audio_url);
+
   useEffect(() => {
     if (finished) {
       router.push(exercise[0].nextExercisePath);
@@ -50,24 +52,15 @@ console.log(words)
 
       // Воспроизводим звук, если выбран правильный ответ
       if (currentWord.audio_url) {
-        const audio = new Audio(currentWord.audio_url);
-        await playAudio(audio); // Ждем завершения воспроизведения
+        playAudio();
+        setTimeout(() => {
+          nextWord();
+        }, 3000);
       }
-
-      nextWord();
     } else {
       setStatus("incorrect");
       setShowNextButton(true);
     }
-  };
-
-  const playAudio = (audio: HTMLAudioElement): Promise<void> => {
-    return new Promise((resolve) => {
-      audio.play();
-      audio.onended = () => {
-        resolve();
-      };
-    });
   };
 
   const nextWord = () => {

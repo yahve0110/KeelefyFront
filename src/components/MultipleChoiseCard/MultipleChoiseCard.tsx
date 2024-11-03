@@ -28,7 +28,7 @@ export const MultipleChoiseCard = (props: Props) => {
   } = props;
 
   return (
-    <div className="bg-gray-900 text-white p-8 rounded-lg h-[780px] shadow-lg border-4 border-gray-700 relative overflow-hidden z-20 w-[620px]">
+    <div className="bg-gray-900 text-white p-8  h-[780px] shadow-lg border-4 border-gray-700 relative overflow-hidden z-20 rounded-2xl w-[530px]">
       <div className="flex items-center flex-col mt-14">
         <>
           <p className="text-5xl mb-4">{word}</p>
@@ -58,7 +58,7 @@ export const MultipleChoiseCard = (props: Props) => {
               <Button
                 key={el}
                 onClick={() => handleTranslationClick(el)}
-                className={`p-4 rounded-2xl text-xl min-w-[150px] ${
+                className={`p-[8px] rounded-2xl text-[18px] min-w-[140px] min-h-[60px] ${
                   selectedTranslation === el
                     ? status === "correct"
                       ? "bg-green-500"

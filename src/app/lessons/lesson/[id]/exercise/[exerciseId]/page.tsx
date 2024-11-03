@@ -1,4 +1,6 @@
+"use client";
 import { exType } from "@/app/data";
+import ToggleAudio from "@/components/ToggleAudio/ToggleAudio";
 import CreatePhraseEstEx from "@/components/Exercises/CreatePhraseEstEx/page";
 import CreatePhraseRu from "@/components/Exercises/CreatePhraseRu/page";
 import Matching from "@/components/Exercises/Matching/page";
@@ -26,7 +28,7 @@ const ExercisePage = ({
   console.log(exerciseId);
 
   // Convert exerciseId to number and typecast it to narrow the type
-  const exercise = exType[Number(exerciseId) as keyof typeof exType]; // Use "keyof" to ensure type-safety
+  const exercise = exType[Number(exerciseId) as keyof typeof exType];
 
   if (!exercise) {
     return <div>Упражнение не найдено</div>;
@@ -43,7 +45,15 @@ const ExercisePage = ({
     return <div>Неизвестный тип задания</div>;
   }
 
-  return <ExerciseComponent exercise={exercise} />;
+
+  return (
+    <div className="relative">
+      <ExerciseComponent exercise={exercise} />
+      <div className="absolute top-0 -right-20 z-30 ">
+        <ToggleAudio/>
+      </div>
+    </div>
+  );
 };
 
 export default ExercisePage;

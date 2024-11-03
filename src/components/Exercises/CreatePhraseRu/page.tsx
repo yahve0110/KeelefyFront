@@ -2,23 +2,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import BackButton from "@/components/BackBtn/BackButton";
 import { createPhraseRuEx } from "@/app/data"; // Import your data source
 import useAudio from "@/app/shared/hooks/useAudio";
 import useShuffle from "@/app/shared/hooks/useShuffle";
-import Congratulations from "@/components/Congrats/Congrats"; // Import the Congratulations component
+import { useRouter } from "next/navigation";
+import CreatePhraseEstEx from "../CreatePhraseEstEx/page";
 
 const phrases = createPhraseRuEx; // Assuming data is an array of phrase objects
 
-const CreatePhraseRu = () => {
+const CreatePhraseRu = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
   const [selectedPhrases, setSelectedPhrases] = useState<string[]>([]);
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState<number>(0);
   const [status, setStatus] = useState<
     { phrase: string; isCorrect: boolean }[]
   >([]);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [allPhrasesCompleted, setAllPhrasesCompleted] =
-    useState<boolean>(false);
+  const [allPhrasesCompleted, setAllPhrasesCompleted] = useState<boolean>(false);
   const [selectablePhrases, setSelectablePhrases] = useState<string[]>([]);
 
   const containerRef = useRef<HTMLDivElement | null>(null); // Create a ref for the container
@@ -42,6 +41,13 @@ const CreatePhraseRu = () => {
     shuffledPhrases[currentPhraseIndex] || phrases[currentPhraseIndex];
 
   const { playAudio } = useAudio(currentPhrase.audio_url);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (allPhrasesCompleted) {
+      router.push(exercise[0].nextExercisePath);
+    }
+  }, [allPhrasesCompleted, router, exercise]);
 
   // Function to add a selected phrase
   const handlePhraseClick = (phrase: string) => {
@@ -88,10 +94,11 @@ const CreatePhraseRu = () => {
     }
   };
 
+ 
+
   return (
     <>
-    { allPhrasesCompleted ? 
-        <Congratulations containerRef={containerRef} /> :(
+  
           <div
           className="px-36 py-12 relative overflow-auto scrollbar overflow-y-auto h-[80%] flex items-center justify-between flex-col"
           ref={containerRef}
@@ -101,7 +108,6 @@ const CreatePhraseRu = () => {
             autoClose={2000}
             hideProgressBar
           />
-          <BackButton className="w-11 h-11 p-6 bg-blue-500 absolute left-[0] rounded-full" />
           <h2 className="text-4xl bold mb-7">Соберите предложение на эстонском</h2>
           <p className="text-5xl mb-4">{currentPhrase.et}</p>{" "}
           {/* Display Estonian phrase */}
@@ -141,7 +147,7 @@ const CreatePhraseRu = () => {
             ))}
           </div>
         </div>
-        )}
+    
     </>
 
   );
