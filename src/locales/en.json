@@ -1,0 +1,24 @@
+{
+  "products": {
+    "cart": "Add to Cart"
+  },
+  "nav": {
+    "lessons": "Lessons",
+    "dictionary": "Dictionary",
+    "profile": "Profile",
+    "settings": "Settings",
+    "chat": "Chat"
+  },
+  "general":{
+    "nextBtn":"Next"
+  },
+  "matching":{
+    "expl":"Match english words with estonian",
+     "draghere":"Drag here"
+  },
+  "createPhrase1":{
+    "createPhrase":"Create phrase in estonian"
+  }
+
+
+}

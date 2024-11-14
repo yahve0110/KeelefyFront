@@ -49,7 +49,7 @@ export const MultipleChoiseCard = (props: Props) => {
               </p>
             )}
             {status === "correct" && (
-              <p className="text-green-600 text-sm">Правильно!</p>
+              <p className="text-green-600 text-sm"></p>
             )}
           </div>
 

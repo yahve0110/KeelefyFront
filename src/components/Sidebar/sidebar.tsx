@@ -13,30 +13,43 @@ import React from "react";
 import logo from "@/app/imgs/svgkeelify.svg";
 import Image from "next/image";
 
+interface SidebarProps {
+  currentLang: 'en' | 'ru';
+  dictionary: {
+    nav: {
+      lessons: string;
+      dictionary: string;
+      profile: string;
+      settings: string;
+      chat: string;
+    };
+  };
+}
+
 const navItems = [
   {
     href: "/lessons",
-    label: "Уроки",
+    labelKey: "lessons",
     icon: BookOpenCheck,
   },
   {
     href: "/dictionary",
-    label: "Словарь",
+    labelKey: "dictionary",
     icon: BookA,
   },
   {
     href: "/profile",
-    label: "Профиль",
+    labelKey: "profile",
     icon: User,
   },
   {
     href: "/settings",
-    label: "Настройки",
+    labelKey: "settings",
     icon: Settings,
   },
   {
     href: "/chat",
-    label: "Чат",
+    labelKey: "chat",
     icon: MessageCircleMore,
   },
 ];
@@ -80,7 +93,7 @@ const NavItem = ({
   );
 };
 
-const Sidebar = () => {
+const Sidebar: React.FC<SidebarProps> = ({ currentLang, dictionary }) => {
   return (
     <nav className="w-[200px] h-screen border flex justify-center border-r-gray-300 pt-6 text-2xl">
       <div>
@@ -88,7 +101,7 @@ const Sidebar = () => {
           href={"/"}
           className="flex items-center gap-1 pb-11 w-[160px] transition-colors duration-200"
         >
-          <h1 className="text-4xl font-bold text-blue-500">Keelify</h1>
+          <h1 className="text-4xl font-bold text-blue-500">Keelefy</h1>
           <Image
             className="w-10 h-10"
             src={logo}
@@ -101,8 +114,8 @@ const Sidebar = () => {
           {navItems.map((item) => (
             <NavItem
               key={item.href}
-              href={item.href}
-              label={item.label}
+              href={`/${currentLang}/${item.href}`}
+              label={dictionary.nav[item.labelKey]}
               Icon={item.icon}
             />
           ))}

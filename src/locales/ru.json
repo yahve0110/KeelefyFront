@@ -1,0 +1,24 @@
+{
+    "products": {
+      "cart": "продукты"
+    },
+    "nav": {
+    "lessons": "Уроки",
+    "dictionary": "Словарь",
+    "profile": "Профиль",
+    "settings": "Настройки",
+    "chat": "Чат"
+  },
+  "general":{
+    "nextBtn":"Далее"
+  },
+  "matching":{
+    "expl":"Сопоставьте русские слова c эстонскими",
+    "draghere":"Перетащите сюда"
+  },
+  "createPhrase1":{
+    "createPhrase":"Соберите предложение на эстонском"
+  }
+
+
+  }

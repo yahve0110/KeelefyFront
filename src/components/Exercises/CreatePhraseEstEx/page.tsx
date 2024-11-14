@@ -2,12 +2,10 @@
 import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/navigation";
-import { createPhraseEstEx } from "@/app/data";
-import useAudio from "@/app/shared/hooks/useAudio";
-import useShuffle from "@/app/shared/hooks/useShuffle";
-
-const phrases = createPhraseEstEx;
+import { useParams, useRouter } from "next/navigation";
+import useAudio from "@/app/[lang]/shared/hooks/useAudio";
+import useShuffle from "@/app/[lang]/shared/hooks/useShuffle";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
 interface CreatePhraseEstEx {
   word: string;
@@ -31,9 +29,21 @@ const CreatePhraseEstEx = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
   const [selectableWords, setSelectableWords] = useState<string[]>([]);
 
   const router = useRouter();
+  const { lang } = useParams(); // Get the language parameter
+  const [dict, setDict] = useState<any>(null); // State for storing the loaded dictionary
+
+  // Fetch the dictionary based on the language
+  useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary); // Store the loaded dictionary
+    };
+
+    fetchDictionary();
+  }, [lang]);
 
   // Shuffle the phrases using the custom hook
-  const shuffledPhrases = useShuffle(phrases);
+  const shuffledPhrases = useShuffle(exercise);
 
   useEffect(() => {
     if (allPhrasesCompleted) {
@@ -56,7 +66,7 @@ const CreatePhraseEstEx = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
   };
 
   const currentPhrase =
-    shuffledPhrases[currentPhraseIndex] || phrases[currentPhraseIndex];
+    shuffledPhrases[currentPhraseIndex] || exercise[currentPhraseIndex];
 
   const { playAudio } = useAudio(currentPhrase.audio_url);
 
@@ -102,6 +112,17 @@ const CreatePhraseEstEx = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
     }
   };
 
+  // Ensure dict is loaded before accessing it
+  if (!dict) {
+    return <div>Loading...</div>; // You can show a loader here while dict is being fetched
+  }
+
+  // Show the appropriate phrase based on the current language
+  const phraseToShow =
+    lang === "ru"
+      ? currentPhrase.ru || "No Russian translation available"
+      : currentPhrase.en || "No English translation available";
+
   return (
     <div className="px-36 py-12 relative overflow-auto scrollbar overflow-y-auto h-[80%] flex items-center justify-between flex-col">
       <ToastContainer
@@ -110,8 +131,8 @@ const CreatePhraseEstEx = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
         hideProgressBar
       />
 
-      <h2 className="text-4xl bold mb-7">Соберите предложение на эстонском</h2>
-      <p className="text-5xl mb-4">{currentPhrase.ru}</p>
+      <h2 className="text-4xl bold mb-7">{dict.createPhrase1.createPhrase}</h2>
+      <p className="text-5xl mb-4">{phraseToShow}</p>
 
       {/* Отображение выбранных слов с их статусом */}
       <div className="flex flex-wrap gap-4 mb-10 ">

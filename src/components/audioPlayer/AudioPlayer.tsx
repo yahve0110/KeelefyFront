@@ -1,13 +1,11 @@
 // components/audioPlayer/AudioPlayer.tsx
 import React from "react";
 import { Volume2 } from "lucide-react";
-import useAudio from "@/app/shared/hooks/useAudio";
+import useAudio from "@/app/[lang]/shared/hooks/useAudio";
 
 interface AudioPlayerProps {
   audioUrl: string;
 }
-
-
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
   const { playAudio } = useAudio(audioUrl);

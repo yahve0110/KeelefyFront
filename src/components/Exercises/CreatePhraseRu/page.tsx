@@ -2,9 +2,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { createPhraseRuEx } from "@/app/data"; // Import your data source
-import useAudio from "@/app/shared/hooks/useAudio";
-import useShuffle from "@/app/shared/hooks/useShuffle";
+import { createPhraseRuEx } from "@/app/[lang]/data"; // Import your data source
+import useAudio from "@/app/[lang]/shared/hooks/useAudio";
+import useShuffle from "@/app/[lang]/shared/hooks/useShuffle";
 import { useRouter } from "next/navigation";
 import CreatePhraseEstEx from "../CreatePhraseEstEx/page";
 
@@ -17,7 +17,8 @@ const CreatePhraseRu = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
     { phrase: string; isCorrect: boolean }[]
   >([]);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [allPhrasesCompleted, setAllPhrasesCompleted] = useState<boolean>(false);
+  const [allPhrasesCompleted, setAllPhrasesCompleted] =
+    useState<boolean>(false);
   const [selectablePhrases, setSelectablePhrases] = useState<string[]>([]);
 
   const containerRef = useRef<HTMLDivElement | null>(null); // Create a ref for the container
@@ -94,62 +95,59 @@ const CreatePhraseRu = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
     }
   };
 
- 
-
   return (
     <>
-  
-          <div
-          className="px-36 py-12 relative overflow-auto scrollbar overflow-y-auto h-[80%] flex items-center justify-between flex-col"
-          ref={containerRef}
-        >
-          <ToastContainer
-            position="bottom-right"
-            autoClose={2000}
-            hideProgressBar
-          />
-          <h2 className="text-4xl bold mb-7">Соберите предложение на эстонском</h2>
-          <p className="text-5xl mb-4">{currentPhrase.et}</p>{" "}
-          {/* Display Estonian phrase */}
-          {/* Display selected phrases with their status */}
-          <div className="flex flex-wrap gap-4 mb-10 ">
-            {selectedPhrases.map((phrase, index) => {
-              const phraseStatus = status.find((s) => s.phrase === phrase);
-              const colorClass =
-                isCorrect === null
-                  ? "bg-gray-500"
-                  : phraseStatus
-                  ? phraseStatus.isCorrect
-                    ? "bg-green-500"
-                    : "bg-red-500"
-                  : "bg-gray-500";
-    
-              return (
-                <div
-                  key={index}
-                  className={`px-4 py-2 text-white rounded-lg ${colorClass} transition-all duration-1000`}
-                >
-                  {phrase}
-                </div>
-              );
-            })}
-          </div>
-          {/* Buttons for selecting phrases */}
-          <div className="flex flex-wrap gap-4 mb-10">
-            {selectablePhrases.map((phrase, index) => (
-              <button
+      <div
+        className="px-36 py-12 relative overflow-auto scrollbar overflow-y-auto h-[80%] flex items-center justify-between flex-col"
+        ref={containerRef}
+      >
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          hideProgressBar
+        />
+        <h2 className="text-4xl bold mb-7">
+          Соберите предложение на эстонском
+        </h2>
+        <p className="text-5xl mb-4">{currentPhrase.et}</p>{" "}
+        {/* Display Estonian phrase */}
+        {/* Display selected phrases with their status */}
+        <div className="flex flex-wrap gap-4 mb-10 ">
+          {selectedPhrases.map((phrase, index) => {
+            const phraseStatus = status.find((s) => s.phrase === phrase);
+            const colorClass =
+              isCorrect === null
+                ? "bg-gray-500"
+                : phraseStatus
+                ? phraseStatus.isCorrect
+                  ? "bg-green-500"
+                  : "bg-red-500"
+                : "bg-gray-500";
+
+            return (
+              <div
                 key={index}
-                onClick={() => handlePhraseClick(phrase)}
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                className={`px-4 py-2 text-white rounded-lg ${colorClass} transition-all duration-1000`}
               >
                 {phrase}
-              </button>
-            ))}
-          </div>
+              </div>
+            );
+          })}
         </div>
-    
+        {/* Buttons for selecting phrases */}
+        <div className="flex flex-wrap gap-4 mb-10">
+          {selectablePhrases.map((phrase, index) => (
+            <button
+              key={index}
+              onClick={() => handlePhraseClick(phrase)}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            >
+              {phrase}
+            </button>
+          ))}
+        </div>
+      </div>
     </>
-
   );
 };
 

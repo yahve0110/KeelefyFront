@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import BackButton from "@/components/BackBtn/BackButton";
 import { MultipleChoiseCard } from "@/components/MultipleChoiseCard/MultipleChoiseCard";
 import { useRouter } from "next/navigation";
-import useAudio from "@/app/shared/hooks/useAudio";
+import useAudio from "@/app/[lang]/shared/hooks/useAudio";
 
 // Универсальный интерфейс для любого упражнения Multiple Choice
 interface MultipleChoiceExercise {

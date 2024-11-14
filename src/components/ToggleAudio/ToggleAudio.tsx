@@ -1,7 +1,7 @@
 // components/audioPlayer/ToggleAudio.tsx
 import React from "react";
 import { Volume2, VolumeOff } from "lucide-react";
-import { useStore } from "@/app/shared/store/store";
+import { useStore } from "@/app/[lang]/shared/store/store";
 
 const ToggleAudio: React.FC = () => {
   const { soundOn, toggle } = useStore();
@@ -16,7 +16,6 @@ const ToggleAudio: React.FC = () => {
         aria-label={soundOn ? "Mute audio" : "Unmute audio"}
       >
         {soundOn ? <Volume2 /> : <VolumeOff />}
-        
       </button>
     </div>
   );

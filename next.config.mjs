@@ -4,11 +4,12 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/lessons',
+        destination: '/ru/lessons',
         permanent: false,
       },
     ];
   },
+
   images: {
     domains: ['firebasestorage.googleapis.com'],
   },

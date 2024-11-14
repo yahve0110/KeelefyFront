@@ -1,14 +1,26 @@
-import { lessonParts } from "@/app/data";
+"use client"
+import { lessonPartsEng, lessonPartsRu } from "@/app/[lang]/data";
 import BackButton from "@/components/BackBtn/BackButton";
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import { useParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 const LessonParts = ({ params }: { params: { slug: string } }) => {
-
   //todo fetch data from server
-  const parts = lessonParts;
+  const { lang } = useParams(); 
 
+  console.log(lang)
+
+  const [parts, setParts] = useState(lessonPartsRu);
+
+  useEffect(() => {
+    if(lang === "ru"){
+      setParts(lessonPartsRu)
+    }else(
+      setParts(lessonPartsEng)
+    )
+  }, [lang]);
   console.log(params);
 
   return (
@@ -22,7 +34,7 @@ const LessonParts = ({ params }: { params: { slug: string } }) => {
               key={part.id}
             >
               <h2 className="text-2xl">{part.title}</h2>
-              <Link href={`/lessons/lesson/${part.id}/theory1`} passHref>
+              <Link href={`/${lang}/lessons/lesson/${part.id}/theory1`} passHref>
                 <button
                   className={`w-8 h-8 bg-white rounded group flex justify-center items-center transition ease-in-out delay-100 ${
                     part.available

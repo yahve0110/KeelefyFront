@@ -1,12 +1,26 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import { LessonCard } from "@/components/LessonCard/LessonCard";
 import BackButton from "@/components/BackBtn/BackButton";
-import { lessons } from "@/app/data";
+import { lessonsEng, lessonsRu } from "@/app/[lang]/data";
+import { useParams } from "next/navigation";
 
 const LevelALessonsList = () => {
-  //toDo:fetch lvlA lessons
+  const { lang } = useParams(); 
 
-  const lessonsList = lessons;
+  console.log(lang)
+
+  const [lessonsList, setLessonsList] = useState(lessonsRu);
+
+  useEffect(() => {
+    if(lang === "ru"){
+      setLessonsList(lessonsRu)
+    }else(
+      setLessonsList(lessonsEng)
+    )
+   
+  }, [lang]);
+
   return (
     <div className="relative overflow-auto px-24 scrollbar overflow-y-auto">
       <BackButton className="w-11 h-11 p-6 bg-blue-500 absolute left-[0] rounded-full" />
@@ -16,7 +30,7 @@ const LevelALessonsList = () => {
             id={lesson.id}
             title={lesson.title}
             available={lesson.available}
-            href={`/lessons/levelA/list/${lesson.id}`}
+            href={`/${lang}/lessons/levelA/list/${lesson.id}`}
             key={lesson.id}
           />
         ))}
