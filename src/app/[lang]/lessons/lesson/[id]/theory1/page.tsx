@@ -28,7 +28,7 @@ const Page = () => {
     const url =
       locale === "ru"
         ? "https://app.heygen.com/embeds/7cecce1c8c1d46c389425dc2889cc356"
-        : "https://www.youtube.com/watch?v=-UXbVHfG8WI&ab_channel=BloombergTelevision";
+        : "https://app.heygen.com/embeds/4dd02802245f45909d092aad7d0458c7";
 
     setIframeUrl(url);
     loadDictionary();

@@ -49,11 +49,11 @@ const Congratulations: React.FC = () => {
         }}
       />
       <h2 className="text-3xl text-center mt-10">
-        Поздравляем! Вы завершили урок!
+        Confratulations! You have finished the lesson!
       </h2>
       <div className="flex justify-center mt-4">
-        <Button onClick={() => (window.location.href = "/lessons")}>
-          Назад к урокам
+        <Button className="p-2" onClick={() => (window.location.href = "/en/lessons/levelA/list/1")}>
+          Back to lessons
         </Button>
       </div>
     </div>

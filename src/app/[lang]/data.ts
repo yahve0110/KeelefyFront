@@ -85,7 +85,8 @@ export const ex1TheoryEng = [
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0045.mp3",
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FhowIsGoing.jpeg?alt=media&token=d2fd54bd-512a-46a3-bd7b-dfe65387c0b7",
-    description: "A question about the well-being of the person being addressed.",
+    description:
+      "A question about the well-being of the person being addressed.",
   },
   {
     en: "Good!",
@@ -233,7 +234,6 @@ export const lessonsEng = [
   },
 ];
 
-
 export const lessonPartsRu = [
   {
     id: "c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45",
@@ -270,7 +270,6 @@ export const lessonPartsEng = [
   },
 ];
 
-
 export const multipleChoiseExEstRu = [
   {
     word: "Tere",
@@ -280,7 +279,8 @@ export const multipleChoiseExEstRu = [
     translations: ["До свидания", "Привет", "Доброе утро"],
     correctWord: "Привет",
     type: "multipleChoiseEstRu",
-    nextExercisePath:"/ru/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2"
+    nextExercisePath:
+      "/ru/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
   },
   {
     word: "Kuidas läheb?",
@@ -290,8 +290,8 @@ export const multipleChoiseExEstRu = [
     translations: ["Куда ты?", "Кто ты?", "Как дела?"],
     correctWord: "Как дела?",
     type: "multipleChoiseEstRu",
-    nextExercisePath:"/ru/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2"
-
+    nextExercisePath:
+      "/ru/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
   },
   {
     word: "Hästi!",
@@ -302,15 +302,14 @@ export const multipleChoiseExEstRu = [
     translations: ["Привет!", "Хорошо!", "Добрый день!"],
     correctWord: "Хорошо!",
     type: "multipleChoiseEstRu",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2"
-
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
   },
   {
     word: "Tere Hommikust!",
     translations: ["Добрый вечер", "Привет", "Доброе утро!"],
     correctWord: "Доброе утро!",
     type: "multipleChoiseEstRu",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
     audio_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FTere%20hommikust!.mp3?alt=media&token=9f73128f-5552-4117-bba1-64e88c083a3e",
     image_url:
@@ -319,7 +318,7 @@ export const multipleChoiseExEstRu = [
   {
     word: "Tere õhtust",
     translations: ["Добрый вечер", "Привет", "До свидания"],
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
     correctWord: "Добрый вечер",
     type: "multipleChoiseEstRu",
     audio_url:
@@ -331,8 +330,9 @@ export const multipleChoiseExEstRu = [
     word: "Tere päevast!",
     translations: ["Добрый вечер", "Добрый день!", "До свидания!"],
     correctWord: "Добрый день!",
-    nextExercisePath:"/ru/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
-    type:"multipleChoiseEstRu",
+    nextExercisePath:
+      "/ru/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
+    type: "multipleChoiseEstRu",
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0044.mp3",
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fhello_2.png?alt=media&token=7a28a257-8d06-4888-8ba9-f076c920d16c",
@@ -348,7 +348,8 @@ export const multipleChoiseExEstEng = [
     translations: ["Goodbye", "Hello", "Good morning"],
     correctWord: "Hello",
     type: "multipleChoiseEstRu",
-    nextExercisePath: "/ru/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2"
+    nextExercisePath:
+      "/en/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
   },
   {
     word: "Kuidas läheb?",
@@ -358,7 +359,8 @@ export const multipleChoiseExEstEng = [
     translations: ["Where are you?", "Who are you?", "How are you?"],
     correctWord: "How are you?",
     type: "multipleChoiseEstRu",
-    nextExercisePath: "/ru/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2"
+    nextExercisePath:
+      "/ru/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
   },
   {
     word: "Hästi!",
@@ -369,7 +371,7 @@ export const multipleChoiseExEstEng = [
     translations: ["Hello!", "Good!", "Good day!"],
     correctWord: "Good!",
     type: "multipleChoiseEstRu",
-    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2"
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
   },
   {
     word: "Tere Hommikust!",
@@ -397,7 +399,8 @@ export const multipleChoiseExEstEng = [
     word: "Tere päevast!",
     translations: ["Good evening", "Good day!", "Goodbye!"],
     correctWord: "Good day!",
-    nextExercisePath: "/ru/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
+    nextExercisePath:
+      "/ru/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/2",
     type: "multipleChoiseEstRu",
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0044.mp3",
     image_url:
@@ -413,10 +416,9 @@ export const matchingRu = [
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0043.mp3",
     translations: ["Tere", "Head aega", "Tere hommikust"],
     correctWord: "Tere",
-    type:"matching",
-    nextExercisePath:"/ru/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4"
-
-
+    type: "matching",
+    nextExercisePath:
+      "/ru/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4",
   },
   {
     word: "Как дела?",
@@ -425,9 +427,8 @@ export const matchingRu = [
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FhowIsGoing.jpeg?alt=media&token=d2fd54bd-512a-46a3-bd7b-dfe65387c0b7",
     translations: ["Kuidas läheb?", "Kes sa oled?", "Kuhu lähed?"],
     correctWord: "Kuidas läheb?",
-    type:"matching",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4"
-
+    type: "matching",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4",
   },
   {
     word: "Хорошо!",
@@ -437,16 +438,15 @@ export const matchingRu = [
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fgood.jpeg?alt=media&token=c7cd5196-a73f-4e1c-9941-6d28d23a38b0",
     translations: ["Tere!", "Hästi!", "Tere päevast!"],
     correctWord: "Hästi!",
-    type:"matching",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4"
-
+    type: "matching",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4",
   },
   {
     word: "Доброе утро!",
     translations: ["Tere hommikust", "Tere õhtust", "Head ööd"],
     correctWord: "Tere hommikust",
-    type:"matching",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4",
+    type: "matching",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4",
     audio_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FTere%20hommikust!.mp3?alt=media&token=9f73128f-5552-4117-bba1-64e88c083a3e",
     image_url:
@@ -456,8 +456,8 @@ export const matchingRu = [
     word: "Добрый вечер",
     translations: ["Tere õhtust", "Tere päevast", "Head aega"],
     correctWord: "Tere õhtust",
-    type:"matching",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4",
+    type: "matching",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4",
     audio_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FTere%20%C3%B5htust!.mp3?alt=media&token=8c325087-82cb-4d53-9f10-6b433a0c8793",
     image_url:
@@ -467,8 +467,8 @@ export const matchingRu = [
     word: "Добрый день!",
     translations: ["Tere päevast", "Tere hommikust", "Head aega"],
     correctWord: "Tere päevast",
-    type:"matching",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4",
+    type: "matching",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4",
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0044.mp3",
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fhello_2.png?alt=media&token=7a28a257-8d06-4888-8ba9-f076c920d16c",
@@ -483,7 +483,8 @@ export const matchingEng = [
     translations: ["Tere", "Head aega", "Tere hommikust"],
     correctWord: "Tere",
     type: "matching",
-    nextExercisePath: "/en/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4",
+    nextExercisePath:
+      "/en/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/4",
   },
   {
     word: "How are you?",
@@ -540,7 +541,6 @@ export const matchingEng = [
   },
 ];
 
-
 export const multipleChoiseExRuToEst = [
   {
     word: "Привет",
@@ -550,7 +550,8 @@ export const multipleChoiseExRuToEst = [
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0043.mp3",
     translations: ["Tere", "Head aega", "Tere hommikust"],
     correctWord: "Tere",
-    nextExercisePath:"/ru/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath:
+      "/ru/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
   },
   {
     word: "Как дела?",
@@ -560,7 +561,7 @@ export const multipleChoiseExRuToEst = [
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FhowIsGoing.jpeg?alt=media&token=d2fd54bd-512a-46a3-bd7b-dfe65387c0b7",
     translations: ["Kuidas läheb?", "Kes sa oled?", "Kuhu lähed?"],
     correctWord: "Kuidas läheb?",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
   },
   {
     word: "Хорошо!",
@@ -571,14 +572,14 @@ export const multipleChoiseExRuToEst = [
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fgood.jpeg?alt=media&token=c7cd5196-a73f-4e1c-9941-6d28d23a38b0",
     translations: ["Tere!", "Hästi!", "Tere päevast!"],
     correctWord: "Hästi!",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
   },
   {
     word: "Доброе утро!",
     type: "multipleChoiseRuEst",
     translations: ["Tere hommikust", "Tere õhtust", "Head ööd"],
     correctWord: "Tere hommikust",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
     audio_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FTere%20hommikust!.mp3?alt=media&token=9f73128f-5552-4117-bba1-64e88c083a3e",
     image_url:
@@ -589,7 +590,7 @@ export const multipleChoiseExRuToEst = [
     type: "multipleChoiseRuEst",
     translations: ["Tere õhtust", "Tere päevast", "Head aega"],
     correctWord: "Tere õhtust",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
     audio_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FTere%20%C3%B5htust!.mp3?alt=media&token=8c325087-82cb-4d53-9f10-6b433a0c8793",
     image_url:
@@ -601,7 +602,7 @@ export const multipleChoiseExRuToEst = [
     translations: ["Tere päevast", "Tere hommikust", "Head aega"],
     correctWord: "Tere päevast",
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0044.mp3",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fhello_2.png?alt=media&token=7a28a257-8d06-4888-8ba9-f076c920d16c",
   },
@@ -616,7 +617,8 @@ export const multipleChoiseExEngToEst = [
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0043.mp3",
     translations: ["Tere", "Head aega", "Tere hommikust"],
     correctWord: "Tere",
-    nextExercisePath:"/en/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath:
+      "/en/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
   },
   {
     word: "How are you?",
@@ -626,7 +628,7 @@ export const multipleChoiseExEngToEst = [
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FhowIsGoing.jpeg?alt=media&token=d2fd54bd-512a-46a3-bd7b-dfe65387c0b7",
     translations: ["Kuidas läheb?", "Kes sa oled?", "Kuhu lähed?"],
     correctWord: "Kuidas läheb?",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
   },
   {
     word: "Good!",
@@ -637,14 +639,14 @@ export const multipleChoiseExEngToEst = [
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fgood.jpeg?alt=media&token=c7cd5196-a73f-4e1c-9941-6d28d23a38b0",
     translations: ["Tere!", "Hästi!", "Tere päevast!"],
     correctWord: "Hästi!",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
   },
   {
     word: "Good morning!",
     type: "multipleChoiseEnEst",
     translations: ["Tere hommikust", "Tere õhtust", "Head ööd"],
     correctWord: "Tere hommikust",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
     audio_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FTere%20hommikust!.mp3?alt=media&token=9f73128f-5552-4117-bba1-64e88c083a3e",
     image_url:
@@ -655,7 +657,7 @@ export const multipleChoiseExEngToEst = [
     type: "multipleChoiseEnEst",
     translations: ["Tere õhtust", "Tere päevast", "Head aega"],
     correctWord: "Tere õhtust",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
     audio_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FTere%20%C3%B5htust!.mp3?alt=media&token=8c325087-82cb-4d53-9f10-6b433a0c8793",
     image_url:
@@ -667,12 +669,11 @@ export const multipleChoiseExEngToEst = [
     translations: ["Tere päevast", "Tere hommikust", "Head aega"],
     correctWord: "Tere päevast",
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0044.mp3",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/3",
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fhello_2.png?alt=media&token=7a28a257-8d06-4888-8ba9-f076c920d16c",
   },
 ];
-
 
 export const createPhraseEstExRu = [
   {
@@ -683,14 +684,14 @@ export const createPhraseEstExRu = [
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fhello_1.png?alt=media&token=78bed978-afe7-4c69-9816-00bd71141f16",
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0043.mp3",
     description: "Обычное неформальное приветствие.",
-    nextExercisePath:"/ru/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
-
+    nextExercisePath:
+      "/ru/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
   },
   {
     ru: "Добрый день!",
     et: "Tere päevast!",
     type: "createPhraseEst",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
     description: "Более формальное приветствие, используемое в течение дня.",
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0044.mp3",
     image_url:
@@ -701,7 +702,7 @@ export const createPhraseEstExRu = [
     et: "Tere hommikust!",
     type: "createPhraseEst",
     description: "Приветствие утром",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
     audio_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FTere%20hommikust!.mp3?alt=media&token=9f73128f-5552-4117-bba1-64e88c083a3e",
     image_url:
@@ -711,7 +712,7 @@ export const createPhraseEstExRu = [
     ru: "Как дела?",
     et: "Kuidas läheb?",
     type: "createPhraseEst",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0045.mp3",
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FhowIsGoing.jpeg?alt=media&token=d2fd54bd-512a-46a3-bd7b-dfe65387c0b7",
@@ -722,7 +723,7 @@ export const createPhraseEstExRu = [
     ru: "Хорошо!",
     et: "Hästi!",
     type: "createPhraseEst",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
     audio_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fh%C3%A4sti%20.mp3?alt=media&token=f43375ae-3581-42bf-a089-a4ed68155ec7",
     image_url:
@@ -733,7 +734,7 @@ export const createPhraseEstExRu = [
     ru: "Добрый вечер!",
     et: "Tere õhtust!",
     type: "createPhraseEst",
-    nextExercisePath:"/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
+    nextExercisePath: "/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
     audio_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2FTere%20%C3%B5htust!.mp3?alt=media&token=8c325087-82cb-4d53-9f10-6b433a0c8793",
     image_url:
@@ -750,7 +751,8 @@ export const createPhraseEstExEng = [
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fhello_1.png?alt=media&token=78bed978-afe7-4c69-9816-00bd71141f16",
     audio_url: "https://www.book2.nl/book2/ET/SOUND/0043.mp3",
     description: "A common informal greeting.",
-    nextExercisePath: "/en/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
+    nextExercisePath:
+      "/en/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/exercise/5",
   },
   {
     en: "Good afternoon!",
@@ -807,12 +809,12 @@ export const createPhraseEstExEng = [
   },
 ];
 
-
 export const createPhraseRuEx = [
   {
     ru: "Привет!",
     et: "Tere!",
-    nextExercisePath:"/ru/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/congrats",
+    nextExercisePath:
+      "/ru/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/congrats",
     type: "createPhraseRu",
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fhello_1.png?alt=media&token=78bed978-afe7-4c69-9816-00bd71141f16",
@@ -874,7 +876,8 @@ export const createPhraseEngEx = [
   {
     en: "Hello!",
     et: "Tere!",
-    nextExercisePath: "/en/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/congrats",
+    nextExercisePath:
+      "/en/lessons/lesson/c1b4d7d5-4f3f-43d8-a7cb-e827c6f40d45/congrats",
     type: "createPhraseEn",
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/keelefy.appspot.com/o/lesson1%2Fhello_1.png?alt=media&token=78bed978-afe7-4c69-9816-00bd71141f16",
@@ -930,7 +933,6 @@ export const createPhraseEngEx = [
     description: "A greeting in the evening.",
   },
 ];
-
 
 export const exType = {
   1: {

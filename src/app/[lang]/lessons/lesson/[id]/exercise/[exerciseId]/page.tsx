@@ -40,7 +40,7 @@ const ExercisePage = ({
   }
 
   const type = currentExercise[0].type; // Assuming exercise data is an array, access the type
-
+console.log("TYPE: " + type);
   // Get the component associated with the exercise type
   const exerciseComponentsMap: Record<string, React.FC<any>> = {
     multipleChoiseEstRu: MultipleChoiseEstRu,  // Corrected to match data
@@ -48,6 +48,7 @@ const ExercisePage = ({
     multipleChoiseRuToEst: MultipleChoiseRuEst,  // Ensure correct mapping
     createPhraseEst: CreatePhraseEstEx,
     createPhraseRu: CreatePhraseRu,
+    createPhraseEn: CreatePhraseRu,
     matching: Matching,
   };
   

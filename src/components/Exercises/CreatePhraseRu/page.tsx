@@ -5,10 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { createPhraseRuEx } from "@/app/[lang]/data"; // Import your data source
 import useAudio from "@/app/[lang]/shared/hooks/useAudio";
 import useShuffle from "@/app/[lang]/shared/hooks/useShuffle";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import CreatePhraseEstEx from "../CreatePhraseEstEx/page";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
-const phrases = createPhraseRuEx; // Assuming data is an array of phrase objects
 
 const CreatePhraseRu = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
   const [selectedPhrases, setSelectedPhrases] = useState<string[]>([]);
@@ -24,11 +24,26 @@ const CreatePhraseRu = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
   const containerRef = useRef<HTMLDivElement | null>(null); // Create a ref for the container
 
   // Shuffle the phrases using the custom hook
-  const shuffledPhrases = useShuffle(phrases);
+  const shuffledPhrases = useShuffle(exercise);
+  const { lang } = useParams(); // Get the language parameter
+  const [dict, setDict] = useState<any>(null); // State for storing the loaded dictionary
+
+  // Fetch the dictionary based on the language
+  useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary); // Store the loaded dictionary
+    };
+
+    fetchDictionary();
+  }, [lang]);
+
+
+  console.log(exercise)
 
   useEffect(() => {
     if (shuffledPhrases.length > 0) {
-      const allPhrases = shuffledPhrases.map((phrase) => phrase.ru); // Keep phrases intact
+      const allPhrases = shuffledPhrases.map((phrase) => phrase.en); // Keep phrases intact
       const shuffledPhrasesList = shuffleArray(allPhrases); // Shuffle phrases
       setSelectablePhrases(shuffledPhrasesList);
     }
@@ -39,7 +54,7 @@ const CreatePhraseRu = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
   };
 
   const currentPhrase =
-    shuffledPhrases[currentPhraseIndex] || phrases[currentPhraseIndex];
+    shuffledPhrases[currentPhraseIndex] || exercise[currentPhraseIndex];
 
   const { playAudio } = useAudio(currentPhrase.audio_url);
   const router = useRouter();
@@ -52,7 +67,7 @@ const CreatePhraseRu = ({ exercise }: { exercise: CreatePhraseEstEx[] }) => {
 
   // Function to add a selected phrase
   const handlePhraseClick = (phrase: string) => {
-    const correctPhrase = currentPhrase.ru; // Get the Estonian phrase for the current question
+    const correctPhrase = currentPhrase.en; // Get the Estonian phrase for the current question
 
     if (!selectedPhrases.includes(phrase)) {
       setSelectedPhrases((prev) => [...prev, phrase]);
